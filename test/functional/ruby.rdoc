@@ -8,15 +8,17 @@ Given a file named 'example.rb' containing:
   #:erb+1: <%= %w{z y x}.sort.join("\n") %>
   blah blah blah
 
-  # Manifest generated 2009  #:erb: ^generated <%= 2009 %>
+  # generated 200X  #:erb: ^generated <%= 2009 %>
+
+  # Another comment
+  VERSION = "?" # :erb: VERSION = "<%= 1+1 %>"
+
+  =begin :erb+0:
+  <%= %w{a b c}.map{ |x| "#{x}!" }.join("\n") %>
+  =end
 
   # Some comment
   puts "We are at the end."
-
-  VERSION = "2" # :erb: VERSION = "<%= 1+1 %>"
-
-  # Another comment
-  puts "Yes we are."
 
 We can render 'example.rb' to a string with the following code.
 
@@ -34,13 +36,18 @@ The result will be:
   y
   z
 
-  # Manifest generated 2009  #:erb: ^generated <%= 2009 %>
+  # generated 2009  #:erb: ^generated <%= 2009 %>
+
+  # Another comment
+  VERSION = "2" # :erb: VERSION = "<%= 1+1 %>"
+
+  =begin :erb+3:
+  <%= %w{a b c}.map{ |x| "#{x}!" }.join("\n") %>
+  =end
+  a!
+  b!
+  c!
 
   # Some comment
   puts "We are at the end."
-
-  VERSION = "2" # :erb: VERSION = "<%= 1+1 %>"
-
-  # Another comment
-  puts "Yes we are."
 

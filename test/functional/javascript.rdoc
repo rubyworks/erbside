@@ -1,0 +1,40 @@
+== Javascript
+
+Given a file named 'example.js' containing:
+
+  // Stuff
+  alert("Testing....");
+
+  //:erb+1: <%= %w{z; y; x;}.sort.join("\n") %>
+  blah blah blah
+
+  // Manifest generated 2009  #:erb: ^generated <%= 2009 %>
+
+  var version = "?"; // :erb: var version = "<%= 1+1 %>";
+
+  // Some comment
+  alert("We are at the end.");
+
+We can render 'example.js' to a string with the following code.
+
+  @result = ""
+  runner  = Erbside::Runner.new(['example.js'], :output=>@result)
+  runner.render
+
+The result will be:
+
+  // Stuff
+  alert("Testing....");
+
+  //:erb+3: <%= %w{z; y; x;}.sort.join("\n") %>
+  x;
+  y;
+  z;
+
+  // Manifest generated 2009  #:erb: ^generated <%= 2009 %>
+
+  var version = "2"; // :erb: var version = "<%= 1+1 %>";
+
+  // Some comment
+  alert("We are at the end.");
+
