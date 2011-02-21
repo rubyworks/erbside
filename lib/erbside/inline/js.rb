@@ -6,7 +6,7 @@ module Erbside
   class Javascript < Inline
 
     #
-    EXTENSIONS = %w{ .js }
+    EXTENSIONS = %w{.js}
 
     #
     def self.extensions
@@ -14,12 +14,21 @@ module Erbside
     end
 
     #
-    def render_result
-      text = content
-      text = render_backs(text)
-      text = render_blocks(text)
+    def remarker
+      '//'
     end
 
+    #
+    def remarker_block_begin
+      '/*'
+    end
+
+    #
+    def remarker_block_end
+      '*/'
+    end
+
+=begin
     #
     BACKS  = /^(\ *)(.*?)(\ *)(\/\/)(\ *)(:till)(\+\d*)?(:)(.*?\S.*?)$/
 
@@ -106,6 +115,7 @@ module Erbside
       size = render.count("\n")
       indent + remark.sub(/:till(\+\d+)?:/, ":till+#{size+1}:") + "\n" + render +"\n"
     end
+=end
 
   end
 

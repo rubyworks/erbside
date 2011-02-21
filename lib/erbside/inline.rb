@@ -231,7 +231,7 @@ module Erbside
         index = i
       end
 
-      result << text[index..-1]
+      result << text[index..-1].to_s
       result
     end
 

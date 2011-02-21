@@ -71,6 +71,7 @@ module Erbside
         puts "  unrecognized #{file}" if $DEBUG || $TRIAL
         return
       end
+
       template = parser.new(file)
       if template.exist? && skip?
         puts "  #{template.relative_output} skipped"

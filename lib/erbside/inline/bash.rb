@@ -5,12 +5,29 @@ module Erbside
   # Bash Adapter
   class Bash < Inline
 
-    EXTENSIONS = %w{ .sh }
+    EXTENSIONS = %w{.sh}
 
+    #
     def self.extensions
       EXTENSIONS
     end
 
+    #
+    def remarker
+      '#'
+    end
+
+    #
+    def remarker_block_begin
+      '#=begin'
+    end
+
+    #
+    def remarker_block_end
+      '#=end'
+    end
+
+=begin
     #
     def render_result
       text = content
@@ -108,6 +125,7 @@ module Erbside
       end
       "#=begin#{pad}:till+#{size}:\n#{temp}\n#=end\n#{render}"
     end
+=end
 
   end
 

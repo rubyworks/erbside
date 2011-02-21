@@ -1,0 +1,61 @@
+== XML/HTML
+
+=== Sideline Example
+
+Given a file named 'example.xml' containing:
+
+  <!-- ordianry comment -->
+  <root>
+  <version number="?"/>  <!-- :erb: <version number="<%= 1+1 %>"/> -->
+  </root>
+
+The rendered result of 'example.xml' will be:
+
+  <!-- ordianry comment -->
+  <root>
+  <version number="2"/>  <!-- :erb: <version number="<%= 1+1 %>"/> -->
+  </root>
+
+=== Multiline Rendering
+
+Given a file named 'example.xml' containing:
+
+  <root>
+    <letters>
+    <!-- :erb+1: <%= %w{z y x}.sort.join("\n").indent(4) -->
+    blah blah blah
+    </letters>
+  </root>
+
+The rendered result of 'example.xml' will be:
+
+  <root>
+    <letters>
+    <!-- :erb+3: <%= %w{z y x}.sort.join("\n").indent(4) -->
+    x
+    y
+    z
+    </letters>
+  </root>
+
+== Block Rendering
+
+Given a file named 'example.xml' containing:
+
+  <root>
+  <!-- :erb+0:
+  <%= %w{a b c}.map{ |x| "<#{x}/>" }.join("\n") %>
+  -->
+  </root>
+
+The rendered result of 'example.xml' will be:
+
+  <root>
+  <!-- :erb+3:
+  <%= %w{a b c}.map{ |x| "<#{x}/>" }.join("\n") %>
+  -->
+  <a/>
+  <b/>
+  <c/>
+  </root>
+

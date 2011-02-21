@@ -15,6 +15,15 @@ When "result will be" do |text|
   text.strip.assert == @result.strip
 end
 
+When "The rendered result of '(((.*?)))' will be" do |file, text|
+  result = ""
+  runner  = Erbside::Runner.new([file], :output=>result)
+  runner.render
+
+  text.strip.assert == result.strip
+end
+
+
 #    out = File.join(@tmpdir, "fixture/inline.rb")
 #    system "till -f #{out}"
 #    expect = File.read('test/features/proofs/inline.rb')

@@ -1,68 +1,50 @@
 == C/C++
 
-Given a file named 'example.c' containing:
+=== Sideline Example
 
-  // File generated 200X  // :erb: ^generated <%= 2009 %>
+Sideline example, where the erb comment is to the side of the
+text it will replace. Given a file named 'example.c' containing:
 
-  #include < stdio.h>
+  version = "?"; // :erb: version = "<%= 1+1 %>";
 
-  void main()
-  {
-    printf("\nHello World\n");
-  }
+The rendered result of 'example.c' will be:
 
-  void foo() {
-    version = "?"; // :erb: version = "<%= 1+1 %>";
+  version = "2"; // :erb: version = "<%= 1+1 %>";
+
+== Multiline Example
+
+Multi-line example, where the erb comment replaces multiple lines but
+is defined by a single line. Given a file named 'example.c' containing:
+
+  void main() {
     //:erb+1: <%= %w{z(); y(); x();}.sort.join("\n").indent(2) %>
     will be replaced
   }
 
-  /* :erb+0:
-  <%= %w{a b c}.map{ |x| "\#include <#{x}.h>" }.join("\n") %>
-  */
+The rendered result of 'example.c' will be:
 
-  // some comment
-  void bar()
-  {
-    printf("We are at the end.");
-  }
-
-We can render 'example.c' to a string with the following code.
-
-  @result = ""
-  runner  = Erbside::Runner.new(['example.c'], :output=>@result)
-  runner.render
-
-The result will be:
-
-  // File generated 2009  // :erb: ^generated <%= 2009 %>
-
-  #include < stdio.h>
-
-  void main()
-  {
-    printf("\nHello World\n");
-  }
-
-  void foo() {
-    version = "2"; // :erb: version = "<%= 1+1 %>";
+  void main() {
     //:erb+3: <%= %w{z(); y(); x();}.sort.join("\n").indent(2) %>
     x();
     y();
     z();
   }
 
+== Block Example
+
+Block example, where the ERB comment replaces multiple lines and is
+defined by a block comment. Given a file named 'example.c' containing:
+
+  /* :erb+0:
+  <%= %w{a b c}.map{ |e| "\#include <#{e}.h>" }.join("\n") %>
+  */
+
+The rendered result of 'example.c' will be:
+
   /* :erb+3:
-  <%= %w{a b c}.map{ |x| "\#include <#{x}.h>" }.join("\n") %>
+  <%= %w{a b c}.map{ |e| "\#include <#{e}.h>" }.join("\n") %>
   */
   #include <a.h>
   #include <b.h>
   #include <c.h>
-
-  // some comment
-  void bar()
-  {
-    printf("We are at the end.");
-  }
-
 

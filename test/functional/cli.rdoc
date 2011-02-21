@@ -6,7 +6,7 @@ Given a file named 'example.rb' containing:
 
 Rendering via the commandline:
 
-  $ erbside -o foo.rb
+  $ erbside -o example.rb
 
 The result will be:
 

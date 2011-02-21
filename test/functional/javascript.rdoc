@@ -1,40 +1,52 @@
 == Javascript
 
+=== Sideline Rendering
+
 Given a file named 'example.js' containing:
 
-  // Stuff
-  alert("Testing....");
+  var version = "?"; // :erb: var version = "<%= 1+1 %>";
+
+The rendered result of 'example.js' will be:
+
+  var version = "2"; // :erb: var version = "<%= 1+1 %>";
+
+Given a file named 'example.js' containing:
+
+  // Manifest generated 2009  #:erb: ^generated <%= 2009 %>
+
+The rendered result of 'example.js' will be:
+
+  // Manifest generated 2009  #:erb: ^generated <%= 2009 %>
+
+=== Multiline Rendering
+
+Given a file named 'example.js' containing:
 
   //:erb+1: <%= %w{z; y; x;}.sort.join("\n") %>
   blah blah blah
 
-  // Manifest generated 2009  #:erb: ^generated <%= 2009 %>
-
-  var version = "?"; // :erb: var version = "<%= 1+1 %>";
-
-  // Some comment
-  alert("We are at the end.");
-
-We can render 'example.js' to a string with the following code.
-
-  @result = ""
-  runner  = Erbside::Runner.new(['example.js'], :output=>@result)
-  runner.render
-
-The result will be:
-
-  // Stuff
-  alert("Testing....");
+The rendered result of 'example.js' will be:
 
   //:erb+3: <%= %w{z; y; x;}.sort.join("\n") %>
   x;
   y;
   z;
 
-  // Manifest generated 2009  #:erb: ^generated <%= 2009 %>
+=== Block Rendering
 
-  var version = "2"; // :erb: var version = "<%= 1+1 %>";
+Given a file named 'example.js' containing:
 
-  // Some comment
-  alert("We are at the end.");
+  /* :erb+1:
+  <%= %w{z; y; x;}.sort.join("\n") %>
+  */
+  blah blah blah
+
+The rendered result of 'example.js' will be:
+
+  /* :erb+3:
+  <%= %w{z; y; x;}.sort.join("\n") %>
+  */
+  x;
+  y;
+  z;
 

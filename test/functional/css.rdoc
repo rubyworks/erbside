@@ -1,0 +1,53 @@
+== CSS
+
+=== Sideline Rendering
+
+Given a file named 'example.css' containing:
+
+  { color: #000; } // :erb: { color: #<%= 1+1 %>00; }
+
+The rendered result of 'example.css' will be:
+
+  { color: #200; } // :erb: { color: #<%= 1+1 %>00; }
+
+Rather then spell out the entire line we can use the front match
+marker. Given a file named 'example.css' containing:
+
+  { color: #000; } // :erb: ^#<%= 2+2 %>00; }
+
+The rendered result of 'example.css' will be:
+
+  { color: #400; } // :erb: ^#<%= 2+2 %>00; }
+
+=== Multiline Rendering
+
+Given a file named 'example.css' containing:
+
+  //:erb+1: <%= %w{z; y; x;}.sort.join("\n") %>
+  blah blah blah
+
+The rendered result of 'example.css' will be:
+
+  //:erb+3: <%= %w{z; y; x;}.sort.join("\n") %>
+  x;
+  y;
+  z;
+
+=== Block Rendering
+
+Given a file named 'example.css' containing:
+
+  /* :erb+1:
+  <%= %w{z; y; x;}.sort.join("\n") %>
+  */
+  blah blah blah
+
+The rendered result of 'example.css' will be:
+
+  /* :erb+3:
+  <%= %w{z; y; x;}.sort.join("\n") %>
+  */
+  x;
+  y;
+  z;
+
