@@ -80,7 +80,7 @@ module Erbside
       @file   = Pathname.new(file)
       @type   = @file.extname
 
-      @context = Context.new(@file.parent)
+      @context = Context.new(@file)
     end
 
     #

@@ -67,12 +67,14 @@ module Erbside
     # Search through a file for inline templates, render and output.
     def render_file(file)
       parser = Inline.factory(file)
+
       if !parser
         puts "  unrecognized #{file}" if $DEBUG || $TRIAL
         return
       end
 
       template = parser.new(file)
+
       if template.exist? && skip?
         puts "  #{template.relative_output} skipped"
       else
