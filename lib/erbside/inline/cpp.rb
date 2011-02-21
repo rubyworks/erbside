@@ -1,10 +1,11 @@
-module Till
+module Erbside
 
-  require 'till/inline'
+  require 'erbside/inline'
 
-  class CSS < Inline
+  # C/C++ Adapter
+  class Cpp < Inline
 
-    EXTENSIONS = %w{ .css }
+    EXTENSIONS = %w{ .c .cpp }
 
     def self.extensions
       EXTENSIONS

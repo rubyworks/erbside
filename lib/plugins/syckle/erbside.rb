@@ -1,8 +1,8 @@
 module Syckle::Plugins
 
-  # = Till Generation Service
+  # = Erbside Generation
   #
-  class Till < Service
+  class Erbside < Service
 
     cycle :main, :generate
     cycle :site, :generate
@@ -14,7 +14,7 @@ module Syckle::Plugins
 
     available do |project|
       begin
-        require 'till'
+        require 'erbside'
         true
       rescue LoadError
         false
@@ -35,7 +35,7 @@ module Syckle::Plugins
       options[:quiet] = quiet?
       options[:force] = force?
 
-      tiller = Till::Tiller.new(dir, options)
+      tiller = Erbside::Runner.new(dir, options)
       tiller.till
     end
 

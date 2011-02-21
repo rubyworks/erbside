@@ -1,17 +1,26 @@
 --- 
-title  : Till
-summary: K.I.S.S. Project Templating
-license: GPL
-contact: proutils@gogglegroups.com
-suite  : proutils
+title  : ERBSide
+summary: Inline Templating
+license: Apache 2.0
+contact: trans <transfire@gmail.com>
+suite  : rubyworks
 authors: Thomas Sawyer
 created: 2009-07-15
 
 description:
-  Till is a simple project-oriented erb-based template system
+  ERBSide is a simple project-oriented erb-based template system
   using POM for metadata.
 
+requires:
+  - facets
+
 resources:
-  homepage: http://proutils.github.com/till
-  repository: git://github.com/proutils/till.git
+  home: http://rubyworks.github.com/erbside
+  code: http://github.com/rubyworks/erbside
+
+repositories: 
+  public: git://github.com/proutils/till.git
+
+copyright:
+  Copyright (c) 2010 Thomas Sawyer
 

@@ -1,10 +1,11 @@
-module Till
+module Erbside
 
-  require 'till/inline'
+  require 'erbside/inline'
 
-  class Javascript < Inline
+  # XML and HTML
+  class SGML < Inline
 
-    EXTENSIONS = %w{ .js }
+    EXTENSIONS = %w{ .html .xml }
 
     def self.extensions
       EXTENSIONS
@@ -18,7 +19,7 @@ module Till
     end
 
     #
-    BACKS  = /^(\ *)(.*?)(\ *)(\/\/)(\ *)(:till)(\+\d*)?(:)(.*?\S.*?)$/
+    BACKS  = /^(\ *)(.*?\S.*?)(\ *)(<!--)(\ *)(:till:)(.*?)(-->)$/
 
     #
     def render_backs(text)
@@ -30,14 +31,14 @@ module Till
 
         indent = md[1]
         front  = md[2]
-        remark = [ md[3], md[4], md[5], md[6], md[7], md[8], md[9] ].join('')
-        tmplt  = md[9].strip
-        count  = md[7]
+        remark = [ md[3], md[4], md[5], md[6], md[7], md[8] ].join('')
+        tmplt  = md[7].strip
+        count  = nil
 
         render = render_template(tmplt)
 
         result << text[index...md.begin(0)]
-        result << format_back(indent, front, remark, tmplt, render, count)
+        result << format_back(indent, front, remark, tmplt, render)
 
         #index = md.end(0)
         i = md.end(0) + 1
@@ -50,24 +51,7 @@ module Till
     end
 
     #
-    def format_back(indent, front, remark, tmplt, render, multi)
-      size = render.count("\n")
-      if multi || size > 0
-        indent + remark.sub(/:till(\+\d+)?:/, ":till+#{size+1}:") + "\n" + render
-      else
-        if tmplt =~ /^\s*\^/
-          b = tmplt.index('^') + 1
-          e = tmplt.index(/[<{]/) || - 1
-          m = tmplt[b...e]
-          i = front.index(m)
-          render = front[0...i] + render.sub('^','') if i
-        end
-        "\n" + indent + render + remark.sub(/:till(\+\d+)?:/, ":till:") + "\n"
-      end
-    end
-
-    #
-    BLOCKS = /^(\ *)(\/\*)(\ *)(:till)(\+\d*)?(\:)(.*?)(\*\/)/m
+    BLOCKS = /^(\ *)(<!--)(\ *)(:till)(\+\d*)?(\:)(.*?)(-->)/m
 
     #
     def render_blocks(text)
@@ -96,6 +80,23 @@ module Till
 
       result << text[index..-1]
       result
+    end
+
+    #
+    def format_back(indent, front, remark, tmplt, render)
+      size = render.count("\n")
+      if size > 0
+        format_block(indent, remark, tmplt, front + render)
+      else
+        if tmplt =~ /^\s*\^/
+          b = tmplt.index('^') + 1
+          e = tmplt.index(/[<{]/) || - 1
+          m = tmplt[b...e]
+          i = front.index(m)
+          render = front[0...i] + render.sub('^','')
+        end
+        indent + render + remark.sub(/:till(\+\d+)?:/, ":till:") + "\n"
+      end
     end
 
     #

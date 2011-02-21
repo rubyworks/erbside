@@ -1,11 +1,14 @@
-module Till
+module Erbside
 
-  require 'till/inline'
+  require 'erbside/inline'
 
-  class Ruby < Inline
+  # Javascript Adapter
+  class Javascript < Inline
 
-    EXTENSIONS = %w{ .rb }
+    #
+    EXTENSIONS = %w{ .js }
 
+    #
     def self.extensions
       EXTENSIONS
     end
@@ -18,7 +21,7 @@ module Till
     end
 
     #
-    BACKS = /^(\ *)(.*?)(\ *)(\#)(\ *)(:till)(\+\d*)?(:)(.*?\S.*?)$/
+    BACKS  = /^(\ *)(.*?)(\ *)(\/\/)(\ *)(:till)(\+\d*)?(:)(.*?\S.*?)$/
 
     #
     def render_backs(text)
@@ -37,7 +40,7 @@ module Till
         render = render_template(tmplt)
 
         result << text[index...md.begin(0)]
-        result << format_backs(indent, front, remark, tmplt, render, count)
+        result << format_back(indent, front, remark, tmplt, render, count)
 
         #index = md.end(0)
         i = md.end(0) + 1
@@ -50,7 +53,7 @@ module Till
     end
 
     #
-    def format_backs(indent, front, remark, tmplt, render, multi=nil)
+    def format_back(indent, front, remark, tmplt, render, multi)
       size = render.count("\n")
       if multi || size > 0
         indent + remark.sub(/:till(\+\d+)?:/, ":till+#{size+1}:") + "\n" + render
@@ -60,14 +63,14 @@ module Till
           e = tmplt.index(/[<{]/) || - 1
           m = tmplt[b...e]
           i = front.index(m)
-          render = front[0...i] + render.sub('^','')
+          render = front[0...i] + render.sub('^','') if i
         end
         "\n" + indent + render + remark.sub(/:till(\+\d+)?:/, ":till:") + "\n"
       end
     end
 
     #
-    BLOCKS = /^(=begin)(\s*)(:till)(\+\d*)?(\:)(\s*\n)((?m:.*?))(\n=end)/
+    BLOCKS = /^(\ *)(\/\*)(\ *)(:till)(\+\d*)?(\:)(.*?)(\*\/)/m
 
     #
     def render_blocks(text)
@@ -77,18 +80,18 @@ module Till
       text.scan(BLOCKS) do |m|
         md = $~
 
-        #indent = ""
+        indent = md[1]
         #front  = nil
-        remark = md[0]
-        pad    = md[2]
-        count  = md[4]
-        tmplt  = md[7]
+        remark = [ md[1], md[2], md[3], md[4], md[5], md[6], md[7], md[8] ].join('')
+        tmplt  = md[7].strip
+        count  = md[5]
 
         render = render_template(tmplt)
 
         result << text[index...md.begin(0)]
-        result << format_block(pad, tmplt, render)
+        result << format_block(indent, remark, tmplt, render)
 
+        #index = md.end(0)
         i = md.end(0) + 1
         count.to_i.times{ i = text[i..-1].index("\n") + i + 1 }
         index = i
@@ -99,9 +102,9 @@ module Till
     end
 
     #
-    def format_block(pad, template, render)
-      size = render.count("\n") + 1
-      "=begin#{pad}:till+#{size}:\n#{template}\n=end\n#{render}"
+    def format_block(indent, remark, tmplt, render)
+      size = render.count("\n")
+      indent + remark.sub(/:till(\+\d+)?:/, ":till+#{size+1}:") + "\n" + render +"\n"
     end
 
   end

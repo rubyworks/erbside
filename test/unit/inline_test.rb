@@ -1,13 +1,13 @@
-require 'test/unit'
-require 'till/inline'
+require 'erbside/inline'
 
-DIR = Pathname.new(__FILE__).parent
+testcase Erbside::Ruby do
 
-class Till::TestInline < Test::Unit::TestCase
+  test '' do
 
-  def test_load
-    file = Till::Inline.new(DIR + 'fixture/inline.rb')
-    file.render
+    es = Erbside::Inline.new(DIR + 'fixture/inline.rb')
+    es.render
+    end
+
   end
 
 end

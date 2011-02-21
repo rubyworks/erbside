@@ -1,12 +1,11 @@
-module Till
+module Erbside
 
   # = Runner
   #
   class Runner
 
-    require 'till/whole'
-    require 'till/inline'
-    require 'till/metadata'
+    require 'erbside/inline'
+    require 'erbside/metadata'
 
     require 'facets/kernel/ask'
     require 'facets/string/tabto'
@@ -20,7 +19,8 @@ module Till
 
     attr_accessor :skip
 
-    attr_accessor :stdout
+    # The +output+ can be any object that responds to #<<.
+    attr_accessor :output
 
     #attr_accessor :delete
 
@@ -29,7 +29,7 @@ module Till
 
     #
     def initialize(files, options)
-      files = files || Dir['**/*.til']
+      files = files || Dir["**/*#{ext_glob}"]
       files = files.map do |file|
         if File.directory?(file)
           collect_usable_files(file)
@@ -38,14 +38,16 @@ module Till
         end
       end.flatten
       @files  = files
+
       @force  = options[:force]
       @skip   = options[:skip]
-      @stdout = options[:stdout]
+      @output = options[:output]
       #@delete = options[:delete]
     end
 
+    #
     def collect_usable_files(dir)
-      Dir[File.join(dir,'**/*.{till,til,rb}')]
+      Dir[File.join(dir,"**/*#{ext_glob}")]
     end
 
     #def delete? ; @delete ; end
@@ -56,61 +58,14 @@ module Till
     def trial?  ; $TRIAL  ; end
 
     #
-    #def tillfiles
-    #  @tillfiles ||= Dir[File.join(@output, '**/*.till')].select{ |f| File.file?(f) }
-    #end
-
-    #
-    #def rubyfiles
-    #  @rubyfiles ||= Dir[File.join(@output, '**/*.rb')].select{ |f| File.file?(f) }
-    #end
-
-    #def whole
-    #  @whole ||= Whole.new
-    #end
-
-    #def inline
-    #  @inline ||= Inline.new
-    #end
-
-    #
-
-    def till
-      #files.each do |file|
-      #  raise "unsupport file type -- #{file}" unless File.extname(file) =~ /^\.(rb|til|till)$/
-      #end
-
+    def render
       files.each do |file|
-        case File.extname(file)
-        when '.till', '.til'
-          till_whole_template(file)
-        else
-          till_inline_template(file)
-        end
+        render_file(file)
       end
     end
 
-    # Search for till templates (*.till) and render.
-    #
-    def till_whole_template(file)
-      template = Whole.new(file)
-      if template.exist? && skip?
-        puts "  #{template.relative_output} skipped"
-      else
-        result = template.render
-        if stdout
-          puts result
-        else
-          save(template, result)
-        end
-      end
-      #result = erb(File.read(file))
-      #fname = file.chomp(File.extname(file))
-      #rm(file) if delete?  # TODO
-    end
-
-    # Search through Ruby files for inline till templates.
-    def till_inline_template(file)
+    # Search through a file for inline templates, render and output.
+    def render_file(file)
       parser = Inline.factory(file)
       if !parser
         puts "  unrecognized #{file}" if $DEBUG || $TRIAL
@@ -121,12 +76,12 @@ module Till
         puts "  #{template.relative_output} skipped"
       else
         result = template.render
-        if stdout
-          puts result
+        if output
+          output << (result + "\n")
         else
           save(template, result)
         end
-      end   
+      end
     end
 
     #
@@ -157,7 +112,14 @@ module Till
       end
     end
 
+
+    private
+
+    #
+    def ext_glob
+      '{' + Inline.extension_list.join(',') + '}'
+    end
+
   end
 
 end
-

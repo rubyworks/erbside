@@ -1,4 +1,4 @@
-module Till
+module Erbside
 
   # Metadata belongs to the project being scaffold.
   #
@@ -9,7 +9,7 @@ module Till
     #require 'facets/ostruct'
 
     begin
-      require 'pom/metadata'
+      require 'pom'
     rescue LoadError
     end
 
