@@ -174,11 +174,11 @@ module Erbside
 
         #index = md.end(0)
         i = md.end(0) + 1
-        count.to_i.times{ i = text[i..-1].index("\n") + i + 1 }
+        count.to_i.times{ i = text[i..-1].index(/(\n|\Z)/) + i + 1 }
         index = i
       end
 
-      result << text[index..-1]
+      result << text[index..-1].to_s
       result
     end
 
@@ -227,7 +227,7 @@ module Erbside
         result << format_block(pad, tmplt, render)
 
         i = md.end(0) + 1
-        count.to_i.times{ i = text[i..-1].index("\n") + i + 1 }
+        count.to_i.times{ i = text[i..-1].index(/(\n|\Z)/) + i + 1 }
         index = i
       end
 

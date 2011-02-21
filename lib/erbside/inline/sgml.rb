@@ -7,10 +7,33 @@ module Erbside
 
     EXTENSIONS = %w{ .html .xml }
 
+    #
     def self.extensions
       EXTENSIONS
     end
 
+    #
+    def remarker
+      '<!--'
+    end
+
+    #
+    def remarker_block_begin
+      '<!--'
+    end
+
+    #
+    def remarker_block_end
+      '-->'
+    end
+
+    #
+    def line_match
+      rem = Regexp.escape(remarker)
+      /^(\ *)(.*?)(\ *)(#{rem})(\ *)(:#{TAG})()?(:)(.*?\S.*?)(-->)$/
+    end
+
+=begin
     #
     def render_result
       text = content
@@ -104,6 +127,7 @@ module Erbside
       size = render.count("\n")
       indent + remark.sub(/:till(\+\d+)?:/, ":till+#{size+1}:") + "\n" + render +"\n"
     end
+=end
 
   end
 
