@@ -38,7 +38,7 @@ The rendered result of 'example.xml' will be:
     </letters>
   </root>
 
-== Block Rendering
+=== Block Rendering
 
 Given a file named 'example.xml' containing:
 

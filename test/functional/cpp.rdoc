@@ -11,7 +11,7 @@ The rendered result of 'example.c' will be:
 
   version = "2"; // :erb: version = "<%= 1+1 %>";
 
-== Multiline Example
+=== Multiline Example
 
 Multi-line example, where the erb comment replaces multiple lines but
 is defined by a single line. Given a file named 'example.c' containing:
@@ -30,7 +30,7 @@ The rendered result of 'example.c' will be:
     z();
   }
 
-== Block Example
+=== Block Example
 
 Block example, where the ERB comment replaces multiple lines and is
 defined by a block comment. Given a file named 'example.c' containing:

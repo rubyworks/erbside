@@ -17,10 +17,10 @@ using POM metadata.
 
 == RESOURCES
 
-* home: http://rubyworks.github.com/erb
-* rdocs: http://rubyworks.github.com/erb/rdoc
-* source: http://github.com/rubyworks/erb
-* forum: http://googlegroups.com/group/rubyworks
+* home: http://rubyworks.github.com/erbsie
+* docs: http://rubyworks.github.com/erbside/doc/api
+* code: http://github.com/rubyworks/erbsie
+* talk: http://googlegroups.com/group/rubyworks
 
 
 == SYNOPSIS
