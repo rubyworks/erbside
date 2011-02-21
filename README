@@ -30,7 +30,7 @@ Erbside also provides access to POM metadata, if present.
 
 Create an template file, such as README.erb.
 
-In a Ruby script add a erb comment.
+In a Ruby script add an ERB comment.
 
   module YourLibrary
     VERSION = "1.0.0" #:erb: VERSION="<%= version %>"
@@ -38,10 +38,16 @@ In a Ruby script add a erb comment.
 
 Then run:
 
-  $ erb
+  $ erbside myscript.rb
 
-All .erb files and all #:erb: inline templates will
-be filled in.
+Unless you use the --force option, Erbside will ask you if
+want to overwrite the file. Type y<Enter> and all of the #:erb:
+inline templating will be filled in.
+
+To see what erbside would do without anctually writing to the file,
+use the -o/--stdout option.
+
+  $ erbside -o myscript.rb
 
 
 == HOW TO INSTALL
