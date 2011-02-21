@@ -1,0 +1,8 @@
+---
+grancher:
+  active: true
+
+email:
+  service: Email
+  mailto: transfire@gmail.com
+

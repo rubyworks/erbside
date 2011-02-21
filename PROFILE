@@ -1,6 +1,6 @@
 --- 
-title  : ERBSide
-summary: Inline Templating
+title  : Eerside
+summary: ERB-based Inline Templating
 license: Apache 2.0
 contact: trans <transfire@gmail.com>
 suite  : rubyworks
@@ -8,8 +8,7 @@ authors: Thomas Sawyer
 created: 2009-07-15
 
 description:
-  ERBSide is a simple project-oriented erb-based template system
-  using POM for metadata.
+  Erbside is a simple project-oriented erb-based inline template system.
 
 requires:
   - facets

@@ -1,0 +1,25 @@
+---
+ridoc:
+  service : RiDoc
+  output  : ri
+  include : lib
+  active  : false
+
+rdoc:
+  service : RDoc
+  template: twofish
+  output  : site/doc/rdoc
+  title   : Erbside API
+  main    : README.rdoc
+  extra   : ""
+  include : [README.rdoc, lib]
+  active  : false
+
+yard:
+  service : Yard
+  output  : site/doc/yard
+  title   : Erbside API
+  readme  : README.core
+  include : [README.rdoc, lib]
+  active  : false
+
