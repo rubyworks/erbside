@@ -1,5 +1,5 @@
 --- 
-title  : Eerside
+title  : Erbside
 summary: ERB-based Inline Templating
 license: Apache 2.0
 contact: trans <transfire@gmail.com>
