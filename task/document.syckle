@@ -1,4 +1,8 @@
 ---
+dnote:
+  service: DNote
+  active: true
+
 ridoc:
   service : RiDoc
   output  : ri

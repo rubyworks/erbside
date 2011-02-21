@@ -2,10 +2,6 @@
 stats:
   service: Stats
 
-dnote:
-  service: DNote
-  active: true
-
 vclog:
   service : VClog
   active: false
