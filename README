@@ -28,8 +28,6 @@ Erbside also provides access to POM metadata, if present.
 
 == SYNOPSIS
 
-Create an template file, such as README.erb.
-
 In a Ruby script add an ERB comment.
 
   module YourLibrary
