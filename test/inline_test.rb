@@ -1,13 +1,14 @@
 require 'erbside/inline'
 
-testcase Erbside::Ruby do
+DIRECTORY = File.dirname(__FILE__)
 
-  test '' do
+KO.case Erbside::Inline do
 
-    es = Erbside::Inline.new(DIR + 'fixture/inline.rb')
+  test 'inline rendering' do
+    file = DIRECTORY + '/fixture/inline.rb'
+    xs = Erbside::Inline.factory(file)
+    es = xs.new(file)
     es.render
-    end
-
   end
 
 end

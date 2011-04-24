@@ -1,7 +1,7 @@
 # Stuff
 puts "Testing...."
 
-# :till+14: <%= Dir['*'].sort.join("\n") %>
+# :erb+14: <%= Dir['*'].sort.join("\n") %>
 HISTORY
 LICENSE
 MANIFEST
@@ -17,12 +17,12 @@ task
 test
 work
 
-# Manifest generated 200X  #:till: ^generated <%= 2009 %>
+# Manifest generated 200X  #:erb: ^generated <%= 2009 %>
 
 # Some comment
 puts "We are at the end."
 
-VERSION = "?"  #:till: VERSION = "<%= 1+1 %>"
+VERSION = "?"  #:erb: VERSION = "<%= 1+1 %>"
 
 # Another comment
 puts "Yes we are."
