@@ -6,15 +6,16 @@ Erbside is a simple inline project-oriented ERB-based template system.
 With Erbside it is very easy to do basic templating without the need
 for file duplication.
 
-Erbside also provides access to POM metadata, if present.
+Erbside also provides direct access to project metadata. It does this
+via {Ruby POM}[http://rubyworks.github.com/pom].
 
 
 == FEATURES
 
 * Easy to use.
-* Used eRuby. Easy.
-* Uses POM metadata. Easy.
-* Templates go where the file goes. Easy.
+* Uses ERB. Easy.
+* Uses POM. Easy.
+* The file is the template. Easy.
 * Did I mention it was easy?
 
 
@@ -23,7 +24,7 @@ Erbside also provides access to POM metadata, if present.
 * home: http://rubyworks.github.com/erbsie
 * docs: http://rubyworks.github.com/erbside/doc/api
 * code: http://github.com/rubyworks/erbsie
-* talk: http://googlegroups.com/group/rubyworks
+* talk: http://googlegroups.com/group/rubyworks-mailinglist
 
 
 == SYNOPSIS
@@ -64,15 +65,6 @@ then download the tarball package and type:
   $ sudo setup.rb all
 
 Windows users use 'ruby setup.rb all'.
-
-
-== LIMITATIONS
-
-Multiline inline ruby templating is not yet supported.
-Would love to implement but need idea on how best to do it.
-
-Also, currently the POM library is not used for accessing meta/
-files. This will change once POM properly supports arbitrary metadata.
 
 
 == COPYRIGHT & LICENSE

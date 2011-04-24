@@ -20,6 +20,8 @@ requires:
 resources:
   home: http://rubyworks.github.com/erbside
   code: http://github.com/rubyworks/erbside
+  docs: http://rubyworks.github.com/erbside/doc/api
+  talk: http://googlegroups.com/group/rubyworks-mailinglist
 
 repositories: 
   public: git://github.com/proutils/till.git
