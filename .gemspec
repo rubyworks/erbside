@@ -15,7 +15,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-04-24 00:00:00 -04:00
+date: 2011-05-15 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -82,18 +82,25 @@ files:
 - lib/erbside/runner.rb
 - lib/erbside.rb
 - lib/plugins/syckle/erbside.rb
+- qed/applique/env.rb
+- qed/bash.rdoc
+- qed/cli.rdoc
+- qed/cpp.rdoc
+- qed/css.rdoc
+- qed/javascript.rdoc
+- qed/ruby.rdoc
+- qed/sgml.rdoc
 - test/fixture/inline.rb
 - test/fixture/inline_complex.rb
 - test/inline_test.rb
 - HISTORY.rdoc
-- PROFILE
-- LICENSE
+- APACHE2.txt
 - README.rdoc
-- VERSION
+- NOTICE.rdoc
 has_rdoc: true
 homepage: http://rubyworks.github.com/erbside
-licenses: []
-
+licenses: 
+- Apache 2.0
 post_install_message: 
 rdoc_options: 
 - --title
@@ -127,5 +134,5 @@ rubygems_version: 1.3.7
 signing_key: 
 specification_version: 3
 summary: ERB-based Inline Templating
-test_files: 
-- test/inline_test.rb
+test_files: []
+

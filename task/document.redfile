@@ -3,8 +3,8 @@ dnote:
   service: DNote
   active: true
 
-ridoc:
-  service : RiDoc
+ri:
+  service : Ri
   output  : ri
   include : lib
   active  : false
@@ -21,9 +21,9 @@ rdoc:
 
 yard:
   service : Yard
-  output  : site/doc/yard
-  title   : Erbside API
+  output  : site/doc/api
+  title   : Erbside
   readme  : README.core
-  include : [README.rdoc, lib]
+  include : [lib, README.rdoc, HISTORY.rdoc, APACHE2.txt, NOTICE.rdoc]
   active  : false
 

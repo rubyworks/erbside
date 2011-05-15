@@ -1,8 +1,7 @@
-doc/rdoc
-doc/ri
+.yardoc
 log
 pack
 pkg
 tmp
-site/doc
+site/docs
 work/sandbox

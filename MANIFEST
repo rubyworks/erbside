@@ -1,4 +1,4 @@
-#!mast bin lib test [A-Z]*
+#!mast bin lib qed test [A-Z][A-Z]*
 bin/erbside
 lib/erbside/context.rb
 lib/erbside/inline/bash.rb
@@ -12,11 +12,18 @@ lib/erbside/metadata.rb
 lib/erbside/runner.rb
 lib/erbside.rb
 lib/plugins/syckle/erbside.rb
+qed/applique/env.rb
+qed/bash.rdoc
+qed/cli.rdoc
+qed/cpp.rdoc
+qed/css.rdoc
+qed/javascript.rdoc
+qed/ruby.rdoc
+qed/sgml.rdoc
 test/fixture/inline.rb
 test/fixture/inline_complex.rb
 test/inline_test.rb
 HISTORY.rdoc
-PROFILE
-LICENSE
+APACHE2.txt
 README.rdoc
-VERSION
+NOTICE.rdoc
