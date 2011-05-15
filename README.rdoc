@@ -2,7 +2,7 @@
 
 == DESCRIPTION
 
-Erbside is a simple inline project-oriented ERB-based template system.
+Erbside is a simple in-line project-oriented ERB-based template system.
 With Erbside it is very easy to do basic templating without the need
 for file duplication.
 
@@ -21,9 +21,9 @@ via {Ruby POM}[http://rubyworks.github.com/pom].
 
 == RESOURCES
 
-* home: http://rubyworks.github.com/erbsie
+* home: http://rubyworks.github.com/erbside
 * docs: http://rubyworks.github.com/erbside/doc/api
-* code: http://github.com/rubyworks/erbsie
+* code: http://github.com/rubyworks/erbside
 * talk: http://googlegroups.com/group/rubyworks-mailinglist
 
 
@@ -41,10 +41,10 @@ Then run:
 
 Unless you use the --force option, Erbside will ask you if
 want to overwrite the file. Type y<Enter> and all of the #:erb:
-inline templating will be filled in.
+in-line templating will be filled in.
 
-To see what erbside would do without anctually writing to the file,
-use the -o/--stdout option.
+To see what erbside would do without actually writing to the file,
+use the `-o/--stdout` option.
 
   $ erbside -o myscript.rb
 
