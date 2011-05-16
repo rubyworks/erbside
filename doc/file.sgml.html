@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>File: sgml</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: sgml</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'>
+<h2>XML/HTML</h2>
+
+<h3>Sideline Example</h3>
+
+<p>Given a file named ‘example.xml’ containing:</p>
+
+<pre class="code"><span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='ordianry identifier id'>ordianry</span> <span class='comment identifier id'>comment</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='root identifier id'>root</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='version identifier id'>version</span> <span class='number identifier id'>number</span><span class='assign token'>=</span><span class='string val'>&quot;?&quot;</span><span class='div op'>/</span><span class='gt op'>&gt;</span>  <span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='symbol val'>:erb</span><span class='colon op'>:</span> <span class='lt op'>&lt;</span><span class='version identifier id'>version</span> <span class='number identifier id'>number</span><span class='assign token'>=</span><span class='string val'>&quot;&lt;%= 1+1 %&gt;&quot;</span><span class='div op'>/</span><span class='gt op'>&gt;</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='regexp val'>/root&gt;
+</span></pre>
+
+<p>The rendered result of ‘example.xml’ will be:</p>
+
+<pre class="code"><span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='ordianry identifier id'>ordianry</span> <span class='comment identifier id'>comment</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='root identifier id'>root</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='version identifier id'>version</span> <span class='number identifier id'>number</span><span class='assign token'>=</span><span class='string val'>&quot;2&quot;</span><span class='div op'>/</span><span class='gt op'>&gt;</span>  <span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='symbol val'>:erb</span><span class='colon op'>:</span> <span class='lt op'>&lt;</span><span class='version identifier id'>version</span> <span class='number identifier id'>number</span><span class='assign token'>=</span><span class='string val'>&quot;&lt;%= 1+1 %&gt;&quot;</span><span class='div op'>/</span><span class='gt op'>&gt;</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='regexp val'>/root&gt;
+</span></pre>
+
+<h3>Multiline Rendering</h3>
+
+<p>Given a file named ‘example.xml’ containing:</p>
+
+<pre class="code"><span class='lt op'>&lt;</span><span class='root identifier id'>root</span><span class='gt op'>&gt;</span>
+  <span class='lt op'>&lt;</span><span class='letters identifier id'>letters</span><span class='gt op'>&gt;</span>
+  <span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='symbol val'>:erb</span><span class='plus op'>+</span><span class='integer val'>1</span><span class='colon op'>:</span> <span class='lt op'>&lt;</span><span class='string val'>%= %w{z y x}.sort.join(&quot;\n&quot;).indent(4) --&gt;
+  blah blah blah
+  &lt;/letters&gt;
+&lt;/root&gt;
+</span></pre>
+
+<p>The rendered result of ‘example.xml’ will be:</p>
+
+<pre class="code"><span class='lt op'>&lt;</span><span class='root identifier id'>root</span><span class='gt op'>&gt;</span>
+  <span class='lt op'>&lt;</span><span class='letters identifier id'>letters</span><span class='gt op'>&gt;</span>
+  <span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='symbol val'>:erb</span><span class='plus op'>+</span><span class='integer val'>3</span><span class='colon op'>:</span> <span class='lt op'>&lt;</span><span class='string val'>%= %w{z y x}.sort.join(&quot;\n&quot;).indent(4) --&gt;
+  x
+  y
+  z
+  &lt;/letters&gt;
+&lt;/root&gt;
+</span></pre>
+
+<h3>Block Rendering</h3>
+
+<p>Given a file named ‘example.xml’ containing:</p>
+
+<pre class="code"><span class='lt op'>&lt;</span><span class='root identifier id'>root</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='symbol val'>:erb</span><span class='plus op'>+</span><span class='integer val'>0</span><span class='colon op'>:</span>
+<span class='lt op'>&lt;</span><span class='dstring node'>%= %w{a b c}.map{ |x| &quot;&lt;#{x}/&gt;&quot; }.join(&quot;\n&quot;) %&gt;
+--&gt;
+&lt;/root&gt;
+</span></pre>
+
+<p>The rendered result of ‘example.xml’ will be:</p>
+
+<pre class="code"><span class='lt op'>&lt;</span><span class='root identifier id'>root</span><span class='gt op'>&gt;</span>
+<span class='lt op'>&lt;</span><span class='notop op'>!</span><span class='minus op'>-</span><span class='minus op'>-</span> <span class='symbol val'>:erb</span><span class='plus op'>+</span><span class='integer val'>3</span><span class='colon op'>:</span>
+<span class='lt op'>&lt;</span><span class='dstring node'>%= %w{a b c}.map{ |x| &quot;&lt;#{x}/&gt;&quot; }.join(&quot;\n&quot;) %&gt;
+--&gt;
+&lt;a/&gt;
+&lt;b/&gt;
+&lt;c/&gt;
+&lt;/root&gt;
+</span></pre>
+</div></div>
+    
+    <div id="footer">
+  Generated on Mon May 16 01:33:33 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.7 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

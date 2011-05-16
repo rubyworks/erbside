@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-<title>Top Level Namespace</title>
+<title>File: cli</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -23,10 +23,8 @@
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html">Index</a> &raquo; 
-    
-    
-    <span class="title">Top Level Namespace</span>
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: cli</span>
   
   
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -43,43 +41,27 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Top Level Namespace
-  
-  
-  
-</h1>
+    <div id="content"><div id='filecontents'>
+<h2>Commandline Interface</h2>
 
-<dl class="box">
-  
-  
-    
-  
-    
-  
-  
-  
-</dl>
-<div class="clear"></div>
+<p>Given a file named ‘example.rb’ containing:</p>
 
-<h2>Defined Under Namespace</h2>
-<p class="children">
-   
-    
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Erbside.html" title="Erbside (module)">Erbside</a></span>
-    
-   
-    
-  
-</p>
+<pre class="code"><span class='example identifier id'>example</span> <span class='comment val'># :erb: change &lt;%= 1+1 %&gt;</span>
+</pre>
 
+<p>Rendering via the commandline:</p>
 
+<pre class="code">$ <span class='erbside identifier id'>erbside</span> <span class='minus op'>-</span><span class='o identifier id'>o</span> <span class='example identifier id'>example</span><span class='dot token'>.</span><span class='rb identifier id'>rb</span>
+</pre>
 
+<p>The result will be:</p>
 
-
-</div>
+<pre class="code"><span class='change identifier id'>change</span> <span class='integer val'>2</span> <span class='comment val'># :erb: change &lt;%= 1+1 %&gt;</span>
+</pre>
+</div></div>
     
     <div id="footer">
-  Generated on Mon May 16 01:33:36 2011 by 
+  Generated on Mon May 16 01:33:33 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.7 (ruby-1.8.7).
 </div>
