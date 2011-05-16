@@ -30,7 +30,7 @@ pre { background: #dfd; -moz-border-radius: 10px; color: #FF5599; font-weight: b
 #nav a { font-size: 100%; font-variant: small-caps; }
 
 #header { height: 240px; padding: 5px 0; border-top: 2px solid yellow; border-bottom: 2px solid yellow; text-align: left;
-          background: url(../images/curb.jpg) no-repeat right #7f7a80; }
+          background: url(../img/curb.jpg) no-repeat right #7f7a80; }
 
 #header h1 { font-size: 86px; font-weight: bold; color: #FFF; font-family: courier, monspace; padding: 36px 0 0 0px; margin: 0; }
 #header h2 { font-size: 20px; font-weight: bold; color: #FFF; font-family: courier, monspace; padding: 0 0 0 6px; margin: 0; }
@@ -45,7 +45,7 @@ pre { background: #dfd; -moz-border-radius: 10px; color: #FF5599; font-weight: b
 
 #aside { position: fixed; padding: 20px; left: 0; top: 60px; width: 210px;
   border-left: 0px solid; border-bottom: 0px solid;
-  border-color: #0C0; background: url(../images/fade.png) transparent;
+  border-color: #0C0; background: url(../img/fade.png) transparent;
   min-height: 210px;
 }
 

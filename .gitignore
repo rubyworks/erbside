@@ -1,7 +1,6 @@
 .yardoc
-log
-pack
 pkg
 tmp
-site/docs
+site/doc
+site/qed
 work/sandbox
