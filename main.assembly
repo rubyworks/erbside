@@ -1,0 +1,63 @@
+---
+email:
+  service: Email
+  mailto: transfire@gmail.com
+
+github:
+  active: true
+
+gem:
+  active: true
+
+qed:
+  active : false
+
+#erbside:
+#  service : Custom
+#  pipeline: main
+#  generate: |
+#    sh 'erbside lib/erbside.rb'
+#  active: false
+
+erbside:
+  service: erbside
+  active: false
+
+# document
+
+dnote:
+  service: DNote
+  active: true
+
+ri:
+  output  : .rdoc
+  include : lib
+  active  : false
+
+rdoc:
+  service : RDoc
+  template: twofish
+  output  : site/api
+  title   : Erbside
+  main    : README.rdoc
+  extra   : ""
+  include : ['lib', '[A-Z]*.*']
+  active  : false
+
+yard:
+  service : Yard
+  output  : site/api
+  title   : Erbside
+  readme  : README.rdoc
+  include : ['lib', '[A-Z]*.*']
+  active  : false
+
+# analyze
+
+locat:
+  active: false
+
+vclog:
+  service : VClog
+  active: false
+
