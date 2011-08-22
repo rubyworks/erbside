@@ -25,6 +25,7 @@ qed:
 
 dnote:
   service: DNote
+  output:  log/DNOTES.rdoc
   active:  true
 
 yard:
