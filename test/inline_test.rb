@@ -2,7 +2,7 @@ require 'erbside/inline'
 
 DIRECTORY = File.dirname(__FILE__)
 
-KO.case Erbside::Inline do
+testcase "Erbside::Inline" do
 
   test 'inline rendering' do
     file = DIRECTORY + '/fixture/inline.rb'
