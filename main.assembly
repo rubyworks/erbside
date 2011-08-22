@@ -29,7 +29,7 @@ dnote:
 
 yard:
   yardopts: true
-  active:   true
+  active:   false
 
 ri:
   output  : .rdoc

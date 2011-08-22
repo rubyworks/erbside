@@ -1,9 +1,9 @@
 = Erbside
 
-{Home}[http://rubyworks.github.com/erbside] |
-{Doc}[http://rubyworks.github.com/erbside/doc] |
-{Code}[http://github.com/rubyworks/erbside] |
-{Mail}[http://googlegroups.com/group/rubyworks-mailinglist]
+{Homepage}[http://rubyworks.github.com/erbside] |
+{Documentation}[http://rubydoc.info/gems/erbside/frames] |
+{Source Code}[http://github.com/rubyworks/erbside] |
+{Mailing List}[http://googlegroups.com/group/rubyworks-mailinglist]
 
 
 == DESCRIPTION
