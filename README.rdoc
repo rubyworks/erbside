@@ -3,7 +3,7 @@
 {Home}[http://rubyworks.github.com/erbside] |
 {Doc}[http://rubyworks.github.com/erbside/doc] |
 {Code}[http://github.com/rubyworks/erbside] |
-{Talk}[http://googlegroups.com/group/rubyworks-mailinglist]
+{Mail}[http://googlegroups.com/group/rubyworks-mailinglist]
 
 
 == DESCRIPTION
@@ -13,7 +13,8 @@ With Erbside it is very easy to do basic templating without the need
 for file duplication.
 
 Erbside also provides direct access to project metadata. It does this
-via {Ruby POM}[http://rubyworks.github.com/pom].
+automatically via {DotRuby}[http://dotruby.github.com/dotruby], or it
+can be instructed to use other resources, including a project's gemspec.
 
 
 == FEATURES
