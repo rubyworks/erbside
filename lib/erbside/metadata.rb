@@ -6,12 +6,10 @@ module Erbside
 
   # Metadata belongs to the project being scaffold.
   #
-  # TODO: Support POM::Metadata
-  #
   class Metadata
 
     # Canonical metadata file.
-    CANONICAL_FILENAME = '.ruby' #::POM::Profile::CANONICAL_FILENAME
+    CANONICAL_FILENAME = '.ruby'
 
     # Root directory is indicated by the presence of a +meta/+ directory,
     # or +.meta/+ hidden directory.
@@ -42,8 +40,8 @@ module Erbside
             end
           end
         when /\.gemspec$/
-          require 'rubygems'
-          @data << ::Gem::Specification.read(source)
+          require 'erbside/gemspec'
+          @data << ::Gem::Specification.load(source)
         when /\.ya?ml$/
           @data << YAML.load_file(source)
         else
@@ -55,9 +53,7 @@ module Erbside
         end
       end
 
-      @cache = {} #OpenStruct.new
-
-      load_cache  # TODO: when pom supports arbitrary metadata, merge @pom and @cache into same variable.
+      @cache = {}
     end
 
     # If method is missing, check the POM and metadata cache.
@@ -68,13 +64,13 @@ module Erbside
 
     # Lookup metadata entry.
     def [](name)
-      name  = name.to_s
-      value = nil
+      name, value = name.to_s, nil
+      return @cache[name] if @cache.key?(name)
       begin
         @data.find{ |d| value = d[name] }
       rescue
       end
-      value
+      @cache[name] = value
     end
 
     # Provide metadata to hash. Some (stencil) template systems
@@ -160,4 +156,3 @@ module Erbside
   end
 
 end
-
