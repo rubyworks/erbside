@@ -1,6 +1,7 @@
 --- 
 authors: 
 - name: Thomas Sawyer
+  email: transfire@gmail.com
 copyrights: 
 - holder: Thomas Sawyer
   year: "2010"
@@ -25,8 +26,8 @@ repositories:
 resources: 
   home: http://rubyworks.github.com/erbside
   code: http://github.com/rubyworks/erbside
-  docs: http://rubyworks.github.com/erbside/doc/api
-  talk: http://googlegroups.com/group/rubyworks-mailinglist
+  docs: http://rubydoc.info/gems/erbside/frames
+  mail: http://googlegroups.com/group/rubyworks-mailinglist
 load_path: 
 - lib
 extra: 

@@ -3,7 +3,7 @@ title  : Erbside
 summary: ERB-based Inline Templating
 contact: trans <transfire@gmail.com>
 suite  : rubyworks
-authors: Thomas Sawyer
+authors: Thomas Sawyer <transfire@gmail.com>
 created: 2009-07-15
 
 description:
