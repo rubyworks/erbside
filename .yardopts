@@ -1,0 +1,6 @@
+--output-dir site/doc
+--title Erbside
+--readme README.rdoc
+lib
+-
+[A-Z]*.*

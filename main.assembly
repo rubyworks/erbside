@@ -19,15 +19,17 @@ qed:
 #    sh 'erbside lib/erbside.rb'
 #  active: false
 
-erbside:
-  service: erbside
-  active: false
-
-# document
+#erbside:
+#  service: erbside
+#  active: false
 
 dnote:
   service: DNote
-  active: true
+  active:  true
+
+yard:
+  yardopts: true
+  active:   true
 
 ri:
   output  : .rdoc
@@ -43,16 +45,6 @@ rdoc:
   extra   : ""
   include : ['lib', '[A-Z]*.*']
   active  : false
-
-yard:
-  service : Yard
-  output  : site/doc
-  title   : Erbside
-  readme  : README.rdoc
-  include : ['lib', '[A-Z]*.*']
-  active  : false
-
-# analyze
 
 locat:
   active: false

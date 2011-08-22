@@ -1,4 +1,6 @@
-#!mast bin lib qed test [A-Z][A-Z]*
+#!mast .ruby .yardopts bin lib qed test [A-Z][A-Z]*
+.ruby
+.yardopts
 bin/erbside
 lib/erbside/context.rb
 lib/erbside/gemspec.rb

@@ -31,7 +31,10 @@ module Erbside
       register << base
     end
 
-    def self.extensions ; raise ; end
+    #
+    def self.extensions
+      raise NotImplementedError
+    end
  
     #
     def self.extension_list
@@ -139,12 +142,12 @@ module Erbside
 
     #
     def remarker
-      raise
+      raise NotImplementedError
     end
 
     #
     def remarker_multiline
-      raise
+      raise NotImplementedError
     end
 
     #

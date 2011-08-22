@@ -3,7 +3,7 @@ module Erbside
   require 'erbside/runner'
 
   #
-  VERSION="0.1.0" #:erb: VERSION="<%= version %>"
+  VERSION="0.2.0" #:erb: VERSION="<%= version %>"
 
   #
   def self.cli(argv=ARGV)
