@@ -1,4 +1,5 @@
-require 'pom'
+begin require 'dotruby' rescue LoadError end
+
 #require 'facets/ostruct'
 
 module Erbside
@@ -10,7 +11,7 @@ module Erbside
   class Metadata
 
     # Canonical metadata file.
-    CANONICAL_FILENAME = ::POM::Profile::CANONICAL_FILENAME
+    CANONICAL_FILENAME = '.ruby' #::POM::Profile::CANONICAL_FILENAME
 
     # Root directory is indicated by the presence of a +meta/+ directory,
     # or +.meta/+ hidden directory.
@@ -19,14 +20,39 @@ module Erbside
     # Project root pathname.
     attr :root
 
-    # Construct new Metadata object.
-    def initialize(root=nil)
-      @root = self.class.root(root) || Dir.pwd
+    # Data resources.
+    attr :resources
 
-      if canonical?
-        @pom = POM::Metadata.new(@root, :canonical)
-      else
-        @pom = POM::Metadata.new(@root, :defaults, :gemspec)
+    # Construct new Metadata object.
+    def initialize(resources, options={})
+      @root = self.class.root(options[:root]) || Dir.pwd
+      @data = []
+
+      @resources = resources
+      @resources << '.ruby' if canonical?
+
+      @resources.each do |source|
+        case File.basename(source)
+        when CANONICAL_FILENAME
+          if canonical?
+            if defined?(::DotRuby)
+              @data << DotRuby::Spec.find(root) #(CANONICAL_FILENAME)
+            else
+              @data << YAML.load_file(canonical_file)
+            end
+          end
+        when /\.gemspec$/
+          require 'rubygems'
+          @data << ::Gem::Specification.read(source)
+        when /\.ya?ml$/
+          @data << YAML.load_file(source)
+        else
+          if File.directory?(source)
+            @data << load_metadir(source)
+          else
+            # now what ?
+          end
+        end
       end
 
       @cache = {} #OpenStruct.new
@@ -40,51 +66,53 @@ module Erbside
       self[name]
     end
 
-    # Lookup metadata entry from POM or cache.
+    # Lookup metadata entry.
     def [](name)
       name  = name.to_s
       value = nil
       begin
-        value = @pom[name]
+        @data.find{ |d| value = d[name] }
       rescue
       end
-      value || @cache[name]
+      value
     end
 
     # Provide metadata to hash. Some (stencil) template systems
     # need the data in hash form.
     def to_h
-      if @pom
-        @pom.to_h
-      else
-        @cache
-      end
+      @data.reverse.inject({}){ |h,d| h.merge(d.to_h) }
     end
 
   private
 
+    def canonical_file
+      File.join(root, CANONICAL_FILENAME)
+    end
+
     #
     def canonical?
-      File.exist?(File.join(root, CANONICAL_FILENAME))
+      File.exist?(canonical_file)
     end
 
     # Load metadata cache. This serves as the fallback for the POM.
-    def load_cache
-      Dir[File.join(metadir, '*')].each do |file|
+    def load_metadir(dir=nil)
+      data = {}
+      Dir[File.join(dir || metadir, '*')].each do |file|
         next unless File.file?(file)
 
         case File.extname(file)
         when '.yaml'
           val = YAML.load(File.new(file))
-          @cache.merge!(val)
+          data.merge!(val)
         when ''
           val = File.read(file).strip
           val = YAML.load(val) if val =~ /\A---/
-          @cache[File.basename(file)] = val
+          data[File.basename(file)] = val
         else
           # ignore
         end
       end
+      data
     end
 
     # What is project root's meta directory?

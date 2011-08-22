@@ -76,11 +76,11 @@ module Erbside
     # I N I T I A L I Z E
 
     #
-    def initialize(file)
+    def initialize(file, *resources)
       @file   = Pathname.new(file)
       @type   = @file.extname
 
-      @context = Context.new(@file)
+      @context = Context.new(@file, resources)
     end
 
     #

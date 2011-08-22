@@ -21,9 +21,9 @@ rdoc:
 
 yard:
   service : Yard
-  output  : site/doc/api
+  output  : site/doc
   title   : Erbside
-  readme  : README.core
-  include : [lib, README.rdoc, HISTORY.rdoc, APACHE2.txt, NOTICE.rdoc]
+  readme  : README.rdoc
+  include : [lib, HISTORY.rdoc, APACHE2.txt, NOTICE.rdoc, MANUAL.rdoc]
   active  : false
 

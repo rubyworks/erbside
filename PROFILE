@@ -1,7 +1,6 @@
 --- 
 title  : Erbside
 summary: ERB-based Inline Templating
-license: Apache 2.0
 contact: trans <transfire@gmail.com>
 suite  : rubyworks
 authors: Thomas Sawyer
@@ -28,4 +27,4 @@ repositories:
 
 copyright:
   Copyright (c) 2010 Thomas Sawyer
-
+license: Apache 2.0

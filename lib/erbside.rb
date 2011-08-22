@@ -10,7 +10,7 @@ module Erbside
     require 'optparse'
     require 'erbside/runner'
 
-    options = {}
+    options = {:resources=>[]}
 
     usage = OptionParser.new do |use|
       use.banner = 'Usage: erbside [OPTIONS] [FILE1 FILE2 ...]'
@@ -18,6 +18,10 @@ module Erbside
       #use.on('--delete', 'delete templates when finished') do
       #  options[:delete] = true
       #end
+
+      use.on('-r', '--resource FILE', 'get metadata from file') do |file|
+        options[:resources] << file
+      end
 
       use.on('-f', '--force', 'automatically make overwrites') do
         options[:force] = true

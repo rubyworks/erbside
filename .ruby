@@ -1,46 +1,44 @@
---- 
-spec_version: 1.0.0
-replaces: []
-
-loadpath: 
-- lib
-name: erbside
-repositories: 
-  public: git://github.com/proutils/till.git
+---
+authors:
+- name: Thomas Sawyer
+copyrights:
+- holder: Thomas Sawyer
+  year: '2010'
+  license: Apache 2.0
+replacements: []
 conflicts: []
-
-engine_check: []
-
-title: Erbside
-contact: trans <transfire@gmail.com>
-resources: 
-  code: http://github.com/rubyworks/erbside
-  talk: http://googlegroups.com/group/rubyworks-mailinglist
-  docs: http://rubyworks.github.com/erbside/doc/api
-  home: http://rubyworks.github.com/erbside
-maintainers: []
-
-requires: 
-- group: []
-
-  name: facets
-  version: 0+
-- group: []
-
-  name: pom
-  version: 0+
-- group: 
+requirements:
+- name: facets
+- name: pom
+- name: ko
+  groups:
   - test
-  name: ko
-  version: 0+
-suite: rubyworks
-manifest: MANIFEST
-version: 0.1.0
-licenses: 
-- Apache 2.0
-copyright: Copyright (c) 2010 Thomas Sawyer
-authors: 
-- Thomas Sawyer
-description: Erbside is a simple project-oriented erb-based inline template system. Inline templates make it easy to do basic code generation without the need for duplicate files.
+  development: true
+dependencies: []
+repositories:
+- uri: git://github.com/proutils/till.git
+  scm: git
+  name: public
+resources:
+  home: http://rubyworks.github.com/erbside
+  code: http://github.com/rubyworks/erbside
+  docs: http://rubyworks.github.com/erbside/doc/api
+  talk: http://googlegroups.com/group/rubyworks-mailinglist
+load_path:
+- lib
+extra:
+  contact: trans <transfire@gmail.com>
+  manifest: MANIFEST
+source: []
+alternatives: []
+revision: 0
+title: Erbside
 summary: ERB-based Inline Templating
-created: 2009-07-15
+suite: rubyworks
+created: '2009-07-15'
+description: Erbside is a simple project-oriented erb-based inline template system.
+  Inline templates make it easy to do basic code generation without the need for duplicate
+  files.
+version: 0.1.0
+name: erbside
+date: '2011-08-21'

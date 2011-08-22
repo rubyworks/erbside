@@ -10,10 +10,10 @@ module Erbside
     attr :metadata
 
     #
-    def initialize(file=nil)
+    def initialize(file, resources=[])
       @filename  = file
       @directory = File.dirname(file)
-      @metadata  = Metadata.new(@directory)
+      @metadata  = Metadata.new(resources)
     end
 
     #
@@ -35,7 +35,7 @@ module Erbside
     def render(text)
       Dir.chdir(@directory) do
         erb = ERB.new(text)
-        erb.filename = @filename
+        erb.filename = @filename.to_s
         erb.result(binding)
       end
     end

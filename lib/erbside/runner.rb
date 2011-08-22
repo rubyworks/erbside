@@ -24,6 +24,9 @@ module Erbside
 
     #attr_accessor :delete
 
+    #
+    attr_accessor :resources
+
 
     # I N I T I A L I Z E
 
@@ -39,11 +42,17 @@ module Erbside
       end.flatten
       @files  = files
 
-      @force  = options[:force]
-      @skip   = options[:skip]
-      @output = options[:output]
-      #@delete = options[:delete]
+      @force     = options[:force]
+      @skip      = options[:skip]
+      @output    = options[:output]
+      #@delete    = options[:delete]
+      @resources = options[:resources]
     end
+
+    #
+    #def metadata
+    #  @metadata ||= Metadata.new(*resources)
+    #end
 
     #
     def collect_usable_files(dir)
@@ -73,7 +82,7 @@ module Erbside
         return
       end
 
-      template = parser.new(file)
+      template = parser.new(file, *resources)
 
       if template.exist? && skip?
         puts "  #{template.relative_output} skipped"
