@@ -1,7 +1,6 @@
 --- 
 title  : Erbside
 summary: ERB-based Inline Templating
-contact: trans <transfire@gmail.com>
 suite  : rubyworks
 authors: Thomas Sawyer <transfire@gmail.com>
 created: 2009-07-15
@@ -13,8 +12,12 @@ description:
 
 requires:
   - facets
-  - pom
-  - ko (test)
+  - qed     (test)
+  - citron  (test)
+  - detroit (build)
+
+#suggestions:
+#  - dotruby
 
 resources:
   home: http://rubyworks.github.com/erbside

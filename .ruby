@@ -12,10 +12,17 @@ conflicts: []
 
 requirements: 
 - name: facets
-- name: pom
-- name: ko
+- name: qed
   groups: 
   - test
+  development: true
+- name: citron
+  groups: 
+  - test
+  development: true
+- name: detroit
+  groups: 
+  - build
   development: true
 dependencies: []
 
@@ -31,7 +38,6 @@ resources:
 load_path: 
 - lib
 extra: 
-  contact: trans <transfire@gmail.com>
   manifest: MANIFEST
 source: []
 
@@ -43,6 +49,6 @@ summary: ERB-based Inline Templating
 suite: rubyworks
 created: "2009-07-15"
 description: Erbside is a simple project-oriented erb-based inline template system. Inline templates make it easy to do basic code generation without the need for duplicate files.
-version: 0.2.0
+version: 0.2.1
 name: erbside
 date: "2011-08-22"

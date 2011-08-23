@@ -1,5 +1,14 @@
 = HISTORY
 
+== 0.2.1 / 2011-08-23
+
+Failed to fix dependencies in previous release.
+
+Changes:
+
+* Remove POM from dependencies.
+
+
 == 0.2.0 / 2011-08-22
 
 The release drops use of POM altogether and adds support for multiple optional
