@@ -1,9 +1,23 @@
 module Erbside
-
   require 'erbside/runner'
 
   #
-  VERSION="0.2.0" #:erb: VERSION="<%= version %>"
+  module MetadataMixin
+    def metadata
+      @_metadata ||= (
+        require 'yaml'
+        YAML.load_file(File.dirname(__FILE__) + '/erbside.yml')
+      )
+    end
+    def const_missing(name)
+      key = name.to_s.downcase
+      metadata.key?(key) ? metadata[key] : super(name)
+    end
+  end
+  extend MetadataMixin
+
+  # Yea, this is old school.
+  #VERSION="0.2.0" #:erb: VERSION="<%= version %>"
 
   #
   def self.cli(argv=ARGV)

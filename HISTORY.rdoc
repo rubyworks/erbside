@@ -1,11 +1,24 @@
 = HISTORY
 
+== 0.2.0 / 2011-08-22
+
+The release drops use of POM altogether and adds support for multiple optional
+metadata resources in its place, including .ruby and .gemspecs, yaml files 
+(ending in .yaml/.yml) and "metadir" metadata directories.
+
+Changes:
+
+* Support multiple metadata resources (via -r/--resource).
+* Block templates keep the same layout as given.
+* Project metadata is dynamically loaded using .ruby file.
+
+
 == 0.1.0 / 2011-02-22
 
-This is the initial release of Erbside. Erbside is a derivative of
-and successor to an earlier program called Till.
+This is the initial release of Erbside. Erbside is a derivative of and
+successor to an earlier program called Till (a name I never quite liked).
 
-* 1 Major Enhancment
+Changes:
 
-    * Happy Birthday!
+* Happy Birthday!
 
