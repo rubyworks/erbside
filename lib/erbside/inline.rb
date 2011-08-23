@@ -2,6 +2,7 @@ module Erbside
 
   # Base class for all the inline parsers.
   #
+  # TODO: Split this into two classes, one for inline and one for blocks.
   class Inline
 
     # C L A S S - M E T H O D S
@@ -166,18 +167,19 @@ module Erbside
 
         indent = md[1]
         front  = md[2]
-        remark = [ md[3], md[4], md[5], md[6], md[7], md[8], md[9] ].join('')
+        #remark = [ md[3], md[4], md[5], md[6], md[7], md[8], md[9] ].join('')
+        remark = md[3..-1].join('')
         tmplt  = md[9].strip
-        count  = md[7]
+        count  = md[7].to_i
 
         render = render_template(tmplt)
 
         result << text[index...md.begin(0)]
-        result << format_side(indent, front, remark, tmplt, render, count)
+        result << format_side(indent, front, remark, tmplt, render, !count.zero?)
 
         #index = md.end(0)
         i = md.end(0) + 1
-        count.to_i.times{ i = text[i..-1].index(/(\n|\Z)/) + i + 1 }
+        count.times{ i = text[i..-1].index(/(\n|\Z)/) + i + 1 }
         index = i
       end
 
@@ -206,7 +208,18 @@ module Erbside
     def block_match
       b = Regexp.escape(remarker_block_begin)
       e = Regexp.escape(remarker_block_end)
-      %r{^(#{b})(\s*)(:#{TAG})(\+\d*)?(\:)(\s*\n)((?m:.*?))(\n#{e})}
+      %r{^()(#{b})(\s*)(:#{TAG})(\+\d*)?(\:)(\s*\n)((?m:.*?))(\n#{e})}
+    end
+
+    #
+    def block_parts(match_data)
+      { :indent   => match_data[1],
+        :pad      => match_data[3],
+        :count    => match_data[5],
+        :space    => match_data[7],
+        :template => match_data[8],
+        :tail     => match_data[9]
+      }
     end
 
     #
@@ -217,17 +230,19 @@ module Erbside
       text.scan(block_match) do |m|
         md = $~
 
-        #indent = ""
-        #front  = nil
-        remark = md[0]
-        pad    = md[2]
-        count  = md[4]
-        tmplt  = md[7]
+        #remark = md[0]
+
+        parts = block_parts(md)
+
+        indent = parts[:indent]
+        pad    = parts[:pad]
+        count  = parts[:count]
+        tmplt  = parts[:template]
 
         render = render_template(tmplt)
 
         result << text[index...md.begin(0)]
-        result << format_block(pad, tmplt, render)
+        result << format_block(parts, render)
 
         i = md.end(0) + 1
         count.to_i.times{ i = text[i..-1].index(/(\n|\Z)/) + i + 1 }
@@ -239,11 +254,19 @@ module Erbside
     end
 
     #
-    def format_block(pad, template, render)
+    def format_block(parts, render)
+      indent, pad, space, template, tail = parts.values_at(:indent, :pad, :space, :template, :tail)
+
       size = render.count("\n") + 1
+
       b = remarker_block_begin
       e = remarker_block_end
-      "#{b}#{pad}:#{TAG}+#{size}:\n#{template}\n#{e}\n#{render}\n"
+
+      #if template.count("\n") > 0
+        "#{indent}#{b}#{pad}:#{TAG}+#{size}:#{space}#{template}#{tail}\n#{render}\n"
+      #else
+      #  "#{indent}#{b}#{pad}:#{TAG}+#{size}: #{template} #{e}\n#{render}\n"
+      #end
     end
 
   end

@@ -30,7 +30,7 @@ module Erbside
     def block_match
       b = Regexp.escape(remarker_block_begin)
       e = Regexp.escape(remarker_block_end)
-      %r{^(#{b})(\s*)(:#{TAG})(\+\d*)?(\:)(\s*)((?m:.*?))(\s#{e})}
+      %r{^(\s*)(#{b})(\s*)(:#{TAG})(\+\d*)?(\:)(\s*)((?m:.*?))(\s#{e})}
     end
 
   end

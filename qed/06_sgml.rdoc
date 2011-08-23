@@ -22,7 +22,7 @@ Given a file named 'example.xml' containing:
 
   <root>
     <letters>
-    <!-- :erb+1: <%= %w{z y x}.sort.join("\n").indent(4) -->
+    <!-- :erb+1: <%= %w{z y x}.sort.join("\n").indent(4) %> -->
     blah blah blah
     </letters>
   </root>
@@ -31,10 +31,10 @@ The rendered result of 'example.xml' will be:
 
   <root>
     <letters>
-    <!-- :erb+3: <%= %w{z y x}.sort.join("\n").indent(4) -->
-    x
-    y
-    z
+    <!-- :erb+3: <%= %w{z y x}.sort.join("\n").indent(4) %> -->
+      x
+      y
+      z
     </letters>
   </root>
 

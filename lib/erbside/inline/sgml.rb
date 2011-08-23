@@ -33,6 +33,24 @@ module Erbside
       /^(\ *)(.*?)(\ *)(#{rem})(\ *)(:#{TAG})()?(:)(.*?\S.*?)(-->)$/
     end
 
+    #
+    def block_match
+      b = Regexp.escape(remarker_block_begin)
+      e = Regexp.escape(remarker_block_end)
+      %r{^(\s*)(#{b})(\s*)(:#{TAG})(\+\d*)?(\:)(\s*)((?m:.*?))(\s#{e})}
+    end
+
+    #
+    def block_parts(match_data)
+      { :indent   => match_data[1],
+        :pad      => match_data[3],
+        :count    => match_data[5],
+        :space    => match_data[7],
+        :template => match_data[8],
+        :tail     => match_data[9]
+      }
+    end
+
 =begin
     #
     def render_result
