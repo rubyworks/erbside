@@ -10,7 +10,8 @@ gem:
   active: true
 
 qed:
-  active : false
+  files  : qed/*.rdoc
+  active : true
 
 #erbside:
 #  service : Custom
