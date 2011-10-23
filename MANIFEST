@@ -1,4 +1,4 @@
-#!mast .ruby .yardopts bin lib qed test [A-Z][A-Z]*
+#!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
 .ruby
 .yardopts
 bin/erbside
@@ -28,7 +28,6 @@ test/fixture/inline.rb
 test/fixture/inline_complex.rb
 test/inline_test.rb
 HISTORY.rdoc
-PROFILE
 README.rdoc
 QED.rdoc
 NOTICE.rdoc
