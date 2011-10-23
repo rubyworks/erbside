@@ -1,54 +1,51 @@
---- 
-authors: 
+---
+source:
+- PROFILE
+authors:
 - name: Thomas Sawyer
   email: transfire@gmail.com
-copyrights: 
-- holder: Thomas Sawyer
-  year: "2010"
-  license: Apache 2.0
+copyrights:
+- holder: Rubyworks, Thomas Sawyer
+  year: '2010'
+  license: BSD-2-Clause
 replacements: []
-
-conflicts: []
-
-requirements: 
+alternatives: []
+requirements:
 - name: facets
 - name: qed
-  groups: 
+  groups:
   - test
   development: true
 - name: citron
-  groups: 
+  groups:
   - test
   development: true
 - name: detroit
-  groups: 
+  groups:
   - build
   development: true
 dependencies: []
-
-repositories: 
+conflicts: []
+repositories:
 - uri: git://github.com/proutils/till.git
   scm: git
-  name: public
-resources: 
+  name: upstream
+resources:
   home: http://rubyworks.github.com/erbside
   code: http://github.com/rubyworks/erbside
   docs: http://rubydoc.info/gems/erbside/frames
   mail: http://googlegroups.com/group/rubyworks-mailinglist
-load_path: 
+extra: {}
+load_path:
 - lib
-extra: 
-  manifest: MANIFEST
-source: []
-
-alternatives: []
-
 revision: 0
 title: Erbside
 summary: ERB-based Inline Templating
-suite: rubyworks
-created: "2009-07-15"
-description: Erbside is a simple project-oriented erb-based inline template system. Inline templates make it easy to do basic code generation without the need for duplicate files.
-version: 0.2.1
+created: '2009-07-15'
+description: Erbside is a simple project-oriented erb-based inline template system.
+  Inline templates make it easy to do basic code generation without the need for duplicate
+  files.
+organization: rubyworks
 name: erbside
-date: "2011-08-22"
+version: 0.2.2
+date: '2011-10-23'

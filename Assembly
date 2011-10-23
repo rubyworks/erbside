@@ -13,6 +13,13 @@ qed:
   files  : qed/*.rdoc
   active : true
 
+qedoc:
+  title: Erbside Demonstrandum
+  files: qed/*.rdoc
+  output:
+    - QED.rdoc
+    - site/qed.html
+
 #erbside:
 #  service : Custom
 #  pipeline: main
@@ -25,28 +32,12 @@ qed:
 #  active: false
 
 dnote:
-  service: DNote
-  output:  log/DNOTES.rdoc
-  active:  true
+  output: log/NOTES.rdoc
 
 yard:
   yardopts: true
+  priority: 2
   active:   false
-
-ri:
-  output  : .rdoc
-  include : lib
-  active  : false
-
-rdoc:
-  service : RDoc
-  template: spartacus
-  output  : site/doc
-  title   : Erbside
-  main    : README.rdoc
-  extra   : ""
-  include : ['lib', '[A-Z]*.*']
-  active  : false
 
 locat:
   active: false

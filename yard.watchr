@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
 watch /qed\/.*?\.rdoc/ do
-  File.open('DEMOS.rdoc', 'w') do |f|
-    f << "= <i>DEMONSTRATIONS</i>\n\n"
+  File.open('QED.rdoc', 'w') do |f|
     Dir['qed/*.rdoc'].sort.each do |qed_file|
       f << File.read(qed_file)
       f << "\n\n"

@@ -1,0 +1,44 @@
+<h3>Whole File Templating</h3>
+
+<p>Whole file templating takes a designated template, renders it according
+to a specified sequence of filters and then saves it to a designated output.</p>
+
+<p>Erbside template files require an extension of <code>.til</code> or <code>.erbside</code>
+<!-- (the extension may become optional in the future) -->. Erbside templates use YAML front
+matter to specifiy there filter and output options. Here is an example <code>README.til</code>
+file.</p>
+
+<pre>
+---
+output: README.rdoc
+format: rdoc
+filter: erb
+---
+
+= <%= title %>
+
+<%= title %> is such a wonderful project.
+
+Copyright <%= released.strftime("%Y") %> <%= author %>
+</pre>
+
+<p>If YAML front matter is NOT provided, then the template will be rendered via Erb to a
+file less the <code>.til</code> or <code>.erbside</code> extension. Eg. <code>README.til</code> would
+be processed by Erb to produce <code>README</code>.</p>
+
+<p>Because <a href="http://github.com/proutils/erbside">Erbside</a> uses <a href="http://github.com/rtomayko/tilt">Tilt</a>,
+a number of filtering options are available. There are three types of filters: <i>formatters</i>,
+<i>stencils</i> and <i>miscellaneous</i>. Formatters handle layout and depend on the format of the
+given document. A good example of such a filter is <code>html</code> which converts the given format,
+eg. markdown, to html. A stencil filter, on the other hand, handles dynamic content, interpolating
+variable substituations. <code>erb</code>, <code>liquid</code> and <code>mustache</code> are all
+examples of supported stencils. Miscellaneous filters handle odd-and-end transforms, for instance
+a custom filter might be used to mask curse words.</p>
+
+
+<!--
+<p>Front matter options can be overridden on the command-line.</p>
+-->
+
+<li>Templates live where the files live (if you want). Damn that's Easy.</li>
+<li>Uses <a href="http://github.com/rtomayko/tilt">Tilt</a> for deverse format support. Versitle and Easy.</li>

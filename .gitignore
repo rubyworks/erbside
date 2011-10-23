@@ -2,7 +2,7 @@
 pkg
 log
 tmp
-site/doc
-site/qed
+site/docs
+site/qed.html
 work/sandbox
-DEMOS.rdoc
+QED.rdoc

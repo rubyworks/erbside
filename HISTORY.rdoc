@@ -1,5 +1,14 @@
 = HISTORY
 
+== 0.2.2 / 2011-10-23
+
+Fix .gemspec file which prevented proper build.
+
+Changes:
+
+* Fix gemspec.
+
+
 == 0.2.1 / 2011-08-23
 
 Failed to fix dependencies in previous release.

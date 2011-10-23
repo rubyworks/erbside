@@ -15,6 +15,7 @@ lib/erbside/metadata.rb
 lib/erbside/runner.rb
 lib/erbside.rb
 lib/erbside.yml
+qed/00_intro.rdoc
 qed/01_ruby.rdoc
 qed/02_bash.rdoc
 qed/03_cpp.rdoc
@@ -28,7 +29,6 @@ test/fixture/inline_complex.rb
 test/inline_test.rb
 HISTORY.rdoc
 PROFILE
-DEMOS.rdoc
 README.rdoc
-VERSION
+QED.rdoc
 NOTICE.rdoc

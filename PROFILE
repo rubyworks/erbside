@@ -1,7 +1,6 @@
 --- 
 title  : Erbside
 summary: ERB-based Inline Templating
-suite  : rubyworks
 authors: Thomas Sawyer <transfire@gmail.com>
 created: 2009-07-15
 
@@ -26,8 +25,12 @@ resources:
   mail: http://googlegroups.com/group/rubyworks-mailinglist
 
 repositories: 
-  public: git://github.com/proutils/till.git
+  upstream: git://github.com/proutils/till.git
 
-copyright:
-  Copyright (c) 2010 Thomas Sawyer
-license: Apache 2.0
+organization: rubyworks
+
+copyrights:
+  - (c) 2010 Rubyworks, Thomas Sawyer (BSD-2-Clause)
+
+name: erbside
+version: 0.2.2
