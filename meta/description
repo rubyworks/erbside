@@ -1,0 +1,3 @@
+Erbside is a simple project-oriented erb-based inline template system. 
+Inline templates make it easy to do basic code generation without the
+need for duplicate files.
