@@ -24,7 +24,7 @@ module Erbside
       @root = self.class.root(options[:root]) || Dir.pwd
       @data = []
 
-      @resources = resources
+      @resources = [resources].compact.flatten
       @resources << '.ruby' if canonical?
 
       @resources.each do |source|
