@@ -1,6 +1,4 @@
-begin require 'dotruby' rescue LoadError end
-
-#require 'facets/ostruct'
+begin; require 'dotruby'; rescue LoadError; end
 
 module Erbside
 
