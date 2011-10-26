@@ -7,6 +7,7 @@
 
 {<img src="http://travis-ci.org/rubyworks/erbside.png" />}[http://travis-ci.org/rubyworks/erbside]
 
+
 == DESCRIPTION
 
 Erbside is a simple in-line project-oriented ERB-based template system.
@@ -49,13 +50,15 @@ use the `-o/--stdout` option.
   $ erbside -o myscript.rb
 
 
-== HOW TO INSTALL
+== INSTALL
 
-Describe your installation procedure here.
+=== Gem Install
 
 To install with RubyGems simply open a console and type:
 
   $ gem install erb
+
+=== Site Install
 
 Local installation requires Setup.rb (gem install setup),
 then download the tarball package and type:
@@ -67,9 +70,9 @@ then download the tarball package and type:
 Windows users use 'ruby setup.rb all'.
 
 
-== COPYRIGHT & LICENSE
+== COPYRIGHTS
 
-Copyright (c) 2009 Thomas Sawyer
+Copyright (c) 2009 Thomas Sawyer, Rubyworks. All rights reserved.
 
 Erbside is made available according to the terms of the *FreeBSD* license.
 

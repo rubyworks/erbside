@@ -42,10 +42,10 @@ revision: 0
 created: '2009-07-15'
 summary: ERB-based Inline Templating
 title: Erbside
-version: 0.2.2
+version: 0.3.0
 name: erbside
 description: ! "Erbside is a simple project-oriented erb-based inline template system.
   \nInline templates make it easy to do basic code generation without the\nneed for
   duplicate files."
 organization: rubyworks
-date: '2011-10-24'
+date: '2011-10-25'

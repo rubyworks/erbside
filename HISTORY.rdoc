@@ -1,12 +1,15 @@
 = HISTORY
 
-== 0.2.2 / 2011-10-23
+== 0.3.0 / 2011-10-23
 
-Fix .gemspec file which prevented fully proper build of last release.
+This release fixes two issues. First, it fixes the .gemspec file which
+prevented a fully proper build of the last release. Secondly, it fixes
+metadata access so it will work without `dotruby` gem.
 
 Changes:
 
-* Fix gemspec.
+* Fix gemspec file typos.
+* Fix require rescue for dotruby.
 
 
 == 0.2.1 / 2011-08-23
