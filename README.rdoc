@@ -5,6 +5,7 @@
 {Source Code}[http://github.com/rubyworks/erbside] |
 {Mailing List}[http://googlegroups.com/group/rubyworks-mailinglist]
 
+{<img src="http://travis-ci.org/rubyworks/erbside.png" />}[http://travis-ci.org/rubyworks/erbside]
 
 == DESCRIPTION
 
