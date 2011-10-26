@@ -23,10 +23,10 @@ module Erbside
     def initialize(resources, options={})
       @root = self.class.root(options[:root]) || Dir.pwd
       @data = []
-p resources
-      @resources = [resources].compact.flatten
+
+      @resources = [resources].flatten.compact
       @resources << '.ruby' if canonical?
-p @resources
+
       @resources.each do |source|
         case File.basename(source)
         when CANONICAL_FILENAME
