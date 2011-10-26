@@ -76,22 +76,14 @@ Gem::Specification.new do |gemspec|
       version = req['version']
       groups  = req['groups'] || []
 
-      #development = req['development']
-      #if development
-      #  # populate development dependencies
-      #  if gemspec.respond_to?(:add_development_dependency)
-      #    gemspec.add_development_dependency(name,*version)
-      #  else
-      #    gemspec.add_dependency(name,*version)
-      #  end
-      #else
-      #  # populate runtime dependencies  
-      #  if gemspec.respond_to?(:add_runtime_dependency)
-      #    gemspec.add_runtime_dependency(name,*version)
-      #  else
-      #    gemspec.add_dependency(name,*version)
-      #  end
-      #end
+      case version
+      when /^(.*?)\+$/
+        version = ">= #{$1}"
+      when /^(.*?)\-$/
+        version = "< #{$1}"
+      when /^(.*?)\~$/
+        version = "~> #{$1}"
+      end
 
       if groups.empty? or groups.include?('runtime')
         # populate runtime dependencies  
