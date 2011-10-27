@@ -37,19 +37,19 @@ module Erbside
         options[:resources] << file
       end
 
-      use.on('-f', '--force', 'automatically make overwrites') do
-        options[:force] = true
+      use.on('-p', '--prompt', 'prompt for each write') do
+        options[:prompt] = true
       end
 
-      use.on('-s', '--skip', 'automatically skip overwrites') do
-        options[:skip] = true
-      end
+      #use.on('-s', '--skip', 'automatically skip overwrites') do
+      #  options[:skip] = true
+      #end
 
       use.on('-o', '--stdout', 'dump output to stdout instead of saving') do
         options[:output] = $stdout
       end
 
-      use.on('-t', '--trial', 'run in trial mode') do
+      use.on('-t', '--trial', '--dryrun', '--dry-run', 'run in trial mode (no disk writes)') do
         $TRIAL = true
       end
 

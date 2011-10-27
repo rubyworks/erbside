@@ -1,6 +1,7 @@
 module Erbside
 
-  # = Runner
+  # The runner class doe the work of rendering and saving 
+  # targeted files.
   #
   class Runner
 
@@ -13,18 +14,22 @@ module Erbside
 
     # A T T R I B U T E S
 
+    # Files to render.
     attr_accessor :files
 
-    attr_accessor :force
+    # Exclude from files.
+    attr_accessor :exclude
 
-    attr_accessor :skip
+    # Exclude files by matching against basename.
+    attr_accessor :ignore
+
+    # Ask before write.
+    attr_accessor :prompt
 
     # The +output+ can be any object that responds to #<<.
     attr_accessor :output
 
-    #attr_accessor :delete
-
-    #
+    # Files from which to gather metadata.
     attr_accessor :resources
 
 
@@ -32,21 +37,16 @@ module Erbside
 
     #
     def initialize(files, options)
-      files = files || Dir["**/*#{ext_glob}"]
-      files = files.map do |file|
-        if File.directory?(file)
-          collect_usable_files(file)
-        else
-          file
-        end
-      end.flatten
-      @files  = files
+      @files     = files || "**/*#{ext_glob}"
 
-      @force     = options[:force]
-      @skip      = options[:skip]
+      @exclude   = options[:exclude]
+      @ignore    = options[:ignore]
+      @prompt    = options[:prompt]
       @output    = options[:output]
-      #@delete    = options[:delete]
-      @resources = options[:resources]
+      @resources = options[:resource] || options[:resources]
+
+      @trial     = options[:trial] || $TRIAL
+      @debug     = options[:debug] || $DEBUG
     end
 
     #
@@ -55,23 +55,26 @@ module Erbside
     #end
 
     #
-    def collect_usable_files(dir)
-      Dir[File.join(dir,"**/*#{ext_glob}")]
-    end
+    def prompt? ; @prompt ; end
 
-    #def delete? ; @delete ; end
-    def force?  ; @force  ; end
-    def skip?   ; @skip   ; end
+    #
+    def debug?  ; @debug  ; end
 
-    def debug?  ; $DEBUG  ; end
-    def trial?  ; $TRIAL  ; end
+    #
+    def trial?  ; @trial  ; end
+
+    #
+    def dryrun? ; @trial  ; end
 
     #
     def render
-      files.each do |file|
+      $stderr.puts('[DRYRUN]') if trial?
+      target_files.each do |file|
         render_file(file)
       end
     end
+
+  private
 
     # Search through a file for inline templates, render and output.
     def render_file(file)
@@ -84,33 +87,31 @@ module Erbside
 
       template = parser.new(file, *resources)
 
-      if template.exist? && skip?
-        puts "  #{template.relative_output} skipped"
-      else
+      #if template.exist? #&& skip?
+      #  puts "  #{template.relative_output} skipped"
+      #else
         result = template.render
         if output
           output << (result + "\n")
         else
           save(template, result)
         end
-      end
+      #end
     end
 
     #
     def save(template, result)
       name = template.relative_output
       save = false
+
       if trial?
         puts "  #{name}"
       else
         if template.exist?
           if !template.changed?
             puts "  unchanged #{name}"
-          elsif !force?
-            case ask("  overwrite #{name}? ")
-            when 'y', 'yes'
-              save = true
-            end
+          elsif prompt?
+            save = prompt_user(template)
           else
             save = true
           end
@@ -118,18 +119,60 @@ module Erbside
           save = true
         end
       end
+
       if save
         template.save
         puts "    written #{name}"
       end
     end
 
+    #
+    def target_files
+      targets = collect_files(files)
+      targets -= collect_files(exclude) if exclude
+      targets.reject!{ |t| [ignore].flatten.compact.any?{ |m| File.fnmatch?(m, t) } }
+      targets
+    end
 
-    private
+    #
+    def collect_files(files)
+      filelist = []
+      [files].flatten.each do |glob|
+        Dir.glob(glob).each do |file|
+          if File.directory?(file)
+            filelist.concat(collect_directory_files(file))
+          else
+            filelist << file
+          end
+        end
+      end
+    end
+
+    #
+    def collect_directory_files(dir)
+      Dir[File.join(dir,"**/*#{ext_glob}")]
+    end
 
     #
     def ext_glob
       '{' + Inline.extension_list.join(',') + '}'
+    end
+
+    #
+    def prompt_user(template)
+      save = false
+      name = template.relative_output
+
+      case ask("  overwrite `#{name}'? [y/N/v/q] ").downcase
+      when 'y', 'yes', 'ye'
+        save = true
+      when 'v', 'view', 'vi', 'vie'
+        puts File.read(template.file)
+        save = prompt_user(template)
+      when 'q', 'quit'
+        abort
+      end
+      return save
     end
 
   end
