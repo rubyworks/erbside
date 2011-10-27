@@ -1,5 +1,19 @@
 = HISTORY
 
+== 0.4.0 / 2011-10-27
+
+This release improves upon the command options. It gets rid
+of --force and --skip and replaces them with --prompt, which
+allows the user to interactively render each file. This release
+also adds --exclude and --ignore options for finer file selection.
+
+Changes:
+
+* Remove --force and --skip options.
+* Add --prompt option.
+* Add --exclude and --ignore options.
+
+
 == 0.3.0 / 2011-10-23
 
 This release fixes two issues. First, it fixes the .gemspec file which
