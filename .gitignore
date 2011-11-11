@@ -1,8 +1,7 @@
+.reap/digest
 .yardoc
 pkg
 log
 tmp
-site/docs
-site/qed.html
+web
 work/sandbox
-QED.rdoc

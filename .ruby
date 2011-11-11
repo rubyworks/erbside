@@ -1,6 +1,6 @@
 ---
 source:
-- meta
+- var
 authors:
 - name: Thomas Sawyer
   email: transfire@gmail.com
@@ -48,4 +48,4 @@ description: ! "Erbside is a simple project-oriented erb-based inline template s
   \nInline templates make it easy to do basic code generation without the\nneed for
   duplicate files."
 organization: rubyworks
-date: '2011-10-27'
+date: '2011-11-11'
