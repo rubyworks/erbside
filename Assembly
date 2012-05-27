@@ -12,15 +12,14 @@ gem:
   active: true
 
 qed:
-  files  : qed/*.rdoc
-  active : true
+  files  : demo/*.rdoc
 
 qedoc:
   title: Erbside Demonstrandum
-  files: qed/*.rdoc
+  files: demo/*.rdoc
   output:
-    - QED.rdoc
-    - site/qed.html
+    - DEMO.rdoc
+    - site/demo.html
 
 #erbside:
 #  service : Custom
